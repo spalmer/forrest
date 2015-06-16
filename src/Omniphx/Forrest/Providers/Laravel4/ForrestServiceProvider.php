@@ -21,7 +21,7 @@ class ForrestServiceProvider extends ServiceProvider {
     {
         $this->package('omniphx/forrest', null, __DIR__.'/../../../..');
 
-        $authentication  = Config::get('forrest::authentication');
+        $authentication  = Config::get('forrest.authentication');
 
         include __DIR__ . "/../Laravel/Routes/$authentication.php";
     }
@@ -36,7 +36,7 @@ class ForrestServiceProvider extends ServiceProvider {
 
         $this->app['forrest'] = $this->app->share(function($app)
         {
-            $settings  = Config::get('forrest::config');
+            $settings  = Config::get('forrest');
 
             $client   = new \GuzzleHttp\Client();
             $redirect = new \Omniphx\Forrest\Providers\Laravel\LaravelRedirect();
